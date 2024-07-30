@@ -1,0 +1,13 @@
+IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 450, 1150, 450, 400, &tRawData[0], bits, protocol, repeatPeriodMillis, numberOfRepeats);
+            Serial.println("on cmd sent!");
+            delay(2000);
+            
+          } else if (currentLine.startsWith("GET /PowerOff ")) {
+            // /data 엔드포인트 응답
+            tRawData[0] = 0x126CB23;
+            tRawData[1] = 0x32000;
+            tRawData[2] = 0x4A;
+            tRawData[3] = 0x9412;
+            IrSender.sendPulseDistanceWidthFromArray(38, 3400, 1650, 400, 1200, 400, 450, &tRawData[0], bits, protocol, repeatPeriodMillis, numberOfRepeats);
+            Serial.println("off cmd sent!");
+            delay(2000);

@@ -1,57 +1,41 @@
-# This is a sample Python script.
+import socket
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-import numpy as np
+def connect_to_ap(ip, port, password):
+    try:
+        # 소켓 객체 생성
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    with open('onoff_raw.txt','r') as f:
-        lines = f.readlines()
+        # 서버에 연결
+        client_socket.connect((ip, port))
 
-    raw_signal = []
-    for item_line in lines:
-        if 'rawData[200]' in item_line:
-            items = item_line.split('rawData[200]:')[-1].split(',')
-            raw_signal.append(items)
+        # 비밀번호 전송
+        client_socket.sendall(password.encode('utf-8'))
+
+        # 서버로부터 인증 결과 받기
+        auth_response = client_socket.recv(1024)
+        if auth_response.decode('utf-8') == "OK":
+            # 인증 성공 시 메시지 전송
+            message = "Hello, Access Point!"
+            client_socket.sendall(message.encode('utf-8'))
+
+            # 서버로부터 응답 받기
+            response = client_socket.recv(1024)
+            print("Received from server:", response.decode('utf-8'))
         else:
-            continue
+            print("Authentication failed")
 
-    # sorting
-    on_signal = np.zeros(len(raw_signal[0]), dtype=int)
-    off_signal = np.zeros(len(raw_signal[0]), dtype=int)
-    for i, col in enumerate(raw_signal):
-        #comparison with 8 values
-        ref_idx = 0
-        ref_value = int(raw_signal[ref_idx][i])
-        header_flag = 0
-        for k in range(8):
-            if ref_value == int(raw_signal[k][i]) and ref_idx != k:
-                header_flag += 1
+        # 소켓 닫기
+        client_socket.close()
 
-                # result
-                if header_flag == 4: # number of same values reaches 5.
-                    on_signal[i] = ref_value
-                    off_signal[i] = ref_value
-                    break
-            if k == 7: # # couldn't find common value. move on to the next reference idx
-                ref_idx += 1
-
-test = 0
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
+# 주소, 포트 번호, 비밀번호 설정
+ip_address = "192.168.0.14"
+port_number = 80  # 실제 사용하고 있는 포트 번호로 대체
+password = "!dlaudghk88"
 
-
-
-
-
-
-
-
-
-
-test = 0
-
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# 함수 호출
+connect_to_ap(ip_address, port_number, password)

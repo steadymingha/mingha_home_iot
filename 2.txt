@@ -1,0 +1,32 @@
+31~24 약풍 Rawdata[1] 은 온도, Rawdata[2] 약풍 A, 중풍 B, 강풍 D, 자동은 8,
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x32400, 0xA, 0x4600};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x1032400, 0xA, 0x4700};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1650, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x2032400, 0xA, 0x4800};
+    IrSender.sendPulseDistanceWidthFromArray(38, 4550, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x3032400, 0xA, 0x4900};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 450, 1250, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x4032400, 0xA, 0x4A00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 500, 1250, 500, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x5032400, 0xA, 0x4B00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1600, 500, 1300, 500, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x6032400, 0xA, 0x4C00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 450, 1250, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x7032400, 0xA, 0x4D00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1600, 500, 1250, 500, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);

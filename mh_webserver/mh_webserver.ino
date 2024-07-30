@@ -8,7 +8,9 @@ char ssid[] = "spaceshuttle";     // your network SSID (name)
 char pass[] = "!dlaudghk88";      // your network password
 int status = WL_IDLE_STATUS;      // the Wifi radio's status
 
+int ledStatus = LOW;
 WiFiEspServer server(80);
+RingBuffer buf(8);
 
 void setup()
 {
@@ -43,49 +45,66 @@ void setup()
 
 void loop()
 {
-  // Listen for incoming clients
-  WiFiEspClient client = server.available();
-  if (client) {
-    Serial.println("New client connected");
-    // an http request ends with a blank line
-    boolean currentLineIsBlank = true;
-    while (client.connected()) {
-      if (client.available()) {
-        char c = client.read();
-        Serial.write(c);
-        // if you've gotten to the end of the line (received a newline
-        // character) and the line is blank, the http request has ended,
-        // so you can send a reply
-        if (c == '\n' && currentLineIsBlank) {
-          // send a standard http response header
-          client.println("HTTP/1.1 200 OK");
-          client.println("Content-Type: text/html");
-          client.println("Connection: close");  // the connection will be closed after completion of the response
-          client.println("Refresh: 5");  // refresh the page automatically every 5 sec
-          client.println();
-          client.println("<!DOCTYPE HTML>");
-          client.println("<html>");
-          client.println("<h1>Hello from Arduino!</h1>");
-          client.println("</html>");
+  WiFiEspClient client = server.available();  // listen for incoming clients
+
+  if (client) {                               // if you get a client,
+    Serial.println("New client");             // print a message out the serial port
+    buf.init();                               // initialize the circular buffer
+    while (client.connected()) {              // loop while the client's connected
+      if (client.available()) {               // if there's bytes to read from the client,
+        char c = client.read();               // read a byte, then
+        buf.push(c);                          // push it to the ring buffer
+
+        // printing the stream to the serial monitor will slow down
+        // the receiving of data from the ESP filling the serial buffer
+        //Serial.write(c);
+        
+        // you got two newline characters in a row
+        // that's the end of the HTTP request, so send a response
+        if (buf.endsWith("\r\n\r\n")) {
+          sendHttpResponse(client);
           break;
         }
-        if (c == '\n') {
-          // you're starting a new line
-          currentLineIsBlank = true;
-        } else if (c != '\r') {
-          // you've gotten a character on the current line
-          currentLineIsBlank = false;
+
+        // Check to see if the client request was "GET /H" or "GET /L":
+        if (buf.endsWith("GET /H")) {
+          Serial.println("Turn led ON");
+          ledStatus = HIGH;
+          // digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
+        }
+        else if (buf.endsWith("GET /L")) {
+          Serial.println("Turn led OFF");
+          ledStatus = LOW;
+          // digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
         }
       }
     }
-    // give the client time to receive the data
-    delay(10);
+    
     // close the connection
     client.stop();
     Serial.println("Client disconnected");
   }
 }
-
+void sendHttpResponse(WiFiEspClient client)
+{
+  // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
+  // and a content-type so the client knows what's coming, then a blank line:
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-type:text/html");
+  client.println();
+  
+  // // the content of the HTTP response follows the header:
+  // client.print("The LED is ");
+ 
+  // client.println("<br>");
+  // client.println("<br>");
+  
+  // client.println("Click <a href=\"/H\">here</a> turn the LED on<br>");
+  // client.println("Click <a href=\"/L\">here</a> turn the LED off<br>");
+  
+  // The HTTP response ends with another blank line:
+  client.println();
+}
 void printWifiStatus()
 {
   // Print the SSID of the network you're attached to

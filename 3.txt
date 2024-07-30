@@ -1,0 +1,28 @@
+30~24 강풍
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x1032400, 0xD, 0x4A00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x2032400, 0xD, 0x4B00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x3032400, 0xD, 0x4C00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 400, 1300, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x4032400, 0xD, 0x4D00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x5032400, 0xD, 0x4E00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x6032400, 0xD, 0x4F00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x7032400, 0xD, 0x5000};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);

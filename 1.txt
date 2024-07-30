@@ -1,0 +1,69 @@
+31 약풍, 24까지 
+
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x32400, 0x4A, 0x9812};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x1032400, 0x4A, 0x9912};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x2032400, 0x4A, 0x9A12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x3032400, 0x4A, 0x9B12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x4032400, 0x4A, 0x9C12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1700, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x5032400, 0x4A, 0x9D12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x6032400, 0x4A, 0x9E12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1700, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x7032400, 0x4A, 0x9F12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1700, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+
+24 부터 31 약풍 까지
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x7032400, 0x4A, 0x9F12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x6032400, 0x4A, 0x9E12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3400, 1650, 400, 1200, 400, 450, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x5032400, 0x4A, 0x9D12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 400, 1200, 400, 450, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x4032400, 0x4A, 0x9C12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3400, 1650, 400, 1200, 400, 450, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x3032400, 0x4A, 0x9B12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3400, 1650, 400, 1150, 400, 450, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x2032400, 0x4A, 0x9A12};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x1032400, 0x4A, 0x9912};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1700, 450, 1150, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x32400, 0x4A, 0x9812};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1650, 400, 1200, 400, 450, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+

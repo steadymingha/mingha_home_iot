@@ -1,0 +1,22 @@
+Protocol=PulseDistance Raw-Data=0x4600 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x32400, 0xA, 0x4600};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x32400, 0x4A, 0x9812};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1700, 400, 1200, 400, 450, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+
+끄기(리모콘)
+Protocol=PulseDistance Raw-Data=0x9412 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x32000, 0x4A, 0x9412};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3400, 1650, 400, 1200, 400, 450, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+
+어플
+Protocol=PulseDistance Raw-Data=0x5400 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0xF032000, 0xD, 0x5400};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1650, 500, 1250, 500, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);

@@ -1,0 +1,61 @@
+전원 끄기:
+Protocol=PulseDistance Raw-Data=0x5400 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0xF032000, 0xD, 0x5400};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 500, 1250, 500, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+온도30도, 미풍, 냉방
+Protocol=PulseDistance Raw-Data=0x4700 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x1032400, 0xA, 0x4700};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3300, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+온도30도, 약풍, 냉방
+Protocol=PulseDistance Raw-Data=0x4800 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x1032400, 0xB, 0x4800};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+온도 29도, 미풍, 냉방
+Protocol=PulseDistance Raw-Data=0x4800 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x2032400, 0xA, 0x4800};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+온도 29도, 약풍, 냉방
+Protocol=PulseDistance Raw-Data=0x4900 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x2032400, 0xB, 0x4900};
+    IrSender.sendPulseDistanceWidthFromArray(38, 5800, 1650, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+온도 28도, 미풍, 냉방
+Protocol=PulseDistance Raw-Data=0x4900 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x3032400, 0xA, 0x4900};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 450, 1250, 450, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+온도 28도, 약풍, 냉방
+Protocol=PulseDistance Raw-Data=0x4A00 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0x3032400, 0xB, 0x4A00};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+온도 18도, 약풍, 냉방
+Protocol=PulseDistance Raw-Data=0x5400 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0xD032400, 0xB, 0x5400};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1550, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+온도 18도, 미풍, 냉방
+Protocol=PulseDistance Raw-Data=0x5300 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0xD032400, 0xA, 0x5300};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 500, 1250, 500, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+온도 18도, 강풍, 냉방
+Protocol=PulseDistance Raw-Data=0x5700 112 bits LSB first
+Send on a 8 bit platform with: 
+    uint32_t tRawData[]={0x126CB23, 0xE032400, 0xD, 0x5700};
+    IrSender.sendPulseDistanceWidthFromArray(38, 3350, 1600, 400, 1250, 400, 400, &tRawData[0], 112, PROTOCOL_IS_LSB_FIRST, <RepeatPeriodMillis>, <numberOfRepeats>);
+
+어때? 더 필요해?
