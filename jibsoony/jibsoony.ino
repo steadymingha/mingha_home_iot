@@ -50,80 +50,79 @@ const uint8_t protocol = PROTOCOL_IS_LSB_FIRST;
 const uint16_t repeatPeriodMillis = 0; 
 const uint8_t numberOfRepeats = 0; 
 bool flag = false;
+uint8_t startIdx = 0;
+uint8_t endIdx = 0;
+String tempId = "";
 
 
-void loop()
-{
-  WiFiEspClient client = server.available();  
+void loop() {
+  // Check if a client has connected
+  WiFiEspClient client = server.available();
+  if (client) {
+    Serial.println("New client connected");
+    String request = client.readStringUntil('\r');
+    Serial.println(request);
+    client.flush();
+    
+    // Match the request
+    if (request.indexOf("GET /H ") >= 0) {
 
-  if (client) {                               
-    Serial.println("New client");             
-    buf.init();                               
-    while (client.connected()) {              
-      if (client.available()) {               
-        char c = client.read();               
-        buf.push(c);                          
+      tRawData[0] = 0x126CB23;
+      tRawData[1] = 0x32400;
+      tRawData[2] = 0xA;
+      tRawData[3] = 0x4600;
+      flag = true;
 
-        if (buf.endsWith("\r\n\r\n")) {
-          sendHttpResponse(client);
-          break;
-        }
+    } else if (request.indexOf("GET /L ") >= 0) {
 
-        if (buf.endsWith("GET /H")) {
-          tRawData[0] = 0x126CB23;
-          tRawData[1] = 0x32400;
-          tRawData[2] = 0xA;
-          tRawData[3] = 0x4600;
-          flag = true;
-          
-        } else if (buf.endsWith("GET /L")) {
-          tRawData[0] = 0x126CB23;
-          tRawData[1] = 0xF032000;
-          tRawData[2] = 0xD;
-          tRawData[3] = 0x5400;
-          flag = true;
+      tRawData[0] = 0x126CB23;
+      tRawData[1] = 0xF032000;
+      tRawData[2] = 0xD;
+      tRawData[3] = 0x5400;
+      flag = true;
 
-        } else if (buf.endsWith("GET /U")) {
-          if (tRawData[1] > 0x32400) {
-            tRawData[1] -= 0x1000000;
-            tRawData[3] -= 0x0100;
-            flag = true;
-          }
+    } else if (request.startsWith("GET /temp/")) {
 
-        } else if (buf.endsWith("GET /D")) {
-          if (tRawData[1] < 0xF032400) {
-            tRawData[1] += 0x1000000;
-            tRawData[3] += 0x0100;
-            flag = true;
-          }
-        }
-      }
+      startIdx = request.indexOf("/temp/") + 6;
+      endIdx = request.indexOf(" ", startIdx);
+      tempId = request.substring(startIdx, endIdx);
+      
+      tRawData[1] = 0xF032400 - (tempId.toInt()-1)*0x1000000;  //16 :1, 0xF032400  / 31: 16, 0x0032400
+      tRawData[2] = 0xA;
+      tRawData[3] = 0x5500 - (tempId.toInt()-1)*0x0100;       //16:1, 0x5500 / 31: 16, 0x4600
+      flag = true;
+
+    } else {
+      // Unknown endpoint
+      client.println("HTTP/1.1 404 Not Found");
+      client.println("Content-Type: text/html");
+      client.println("Connection: close");
+      client.println();
+      client.println("<!DOCTYPE HTML>");
+      client.println("<html>");
+      client.println("<h1>404 Not Found</h1>");
+      client.println("</html>");
     }
     
+    
+    // Close the connection
+    sendResponse(client);
     client.stop();
     Serial.println("Client disconnected");
   }
 
-  if (flag==true) {
-    IrSender.sendPulseDistanceWidthFromArray(header_seq[0], header_seq[1], header_seq[2], header_seq[3], header_seq[4], header_seq[5], header_seq[6], &tRawData[0], bits, protocol, repeatPeriodMillis, numberOfRepeats);
+  if (flag == true) {    
+        IrSender.sendPulseDistanceWidthFromArray(header_seq[0], header_seq[1], header_seq[2], header_seq[3], header_seq[4], header_seq[5], header_seq[6], &tRawData[0], bits, protocol, repeatPeriodMillis, numberOfRepeats);
     flag = false;
   }
-
-
-
 }
-void sendHttpResponse(WiFiEspClient client)
-{
-  // HTTP headers always start with a response code (e.g. HTTP/1.1 200 OK)
-  // and a content-type so the client knows what's coming, then a blank line:
+
+void sendResponse(WiFiEspClient client) {
   client.println("HTTP/1.1 200 OK");
-  client.println("Content-type:text/html");
-  client.println();
-  
-  // The HTTP response ends with another blank line:
+  client.println("Content-Type: text/html");
+  client.println("Connection: close");
   client.println();
 }
-
 void printWifiStatus()
 {
   Serial.print("SSID: ");
